@@ -2,8 +2,14 @@
 
 
 angular.module('phonecatApp', [
-    'phoneList'
+    'ngRoute',
+    'phoneList',
+    'greetUser',
+    'phoneDetail',
+   ' userDetail'
 ]);
-angular.module('myApp', [
-    'greetUser'
-]);
+// angular.module('myApp', [
+//     'greetUser',
+// 'userDetail'
+//     'ngRoute'
+// ]);

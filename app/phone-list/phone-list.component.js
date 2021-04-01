@@ -1,30 +1,15 @@
-'use strict';
-
-// Register `phoneList` component, along with its associated controller and template
 angular.
-  module('phonecatApp').
+  module('phoneList').
   component('phoneList', {
-    // template:
-    //     '<ul>' +
-    //       '<li ng-repeat="phone in $ctrl.phones">' +
-    //         '<span>{{phone.name}}</span>' +
-    //         '<p>{{phone.snippet}}</p>' +
-    //       '</li>' +
-    //     '</ul>',
-    // Note: The URL is relative to our `index.html` file
-  templateUrl: 'phone-list/phone-list.template.html',
-    controller: function PhoneListController() {
-      this.phones = [
-        {
-          name: 'Nexus S',
-          snippet: 'Fast just got faster with Nexus S.'
-        }, {
-          name: 'Motorola XOOM™ with Wi-Fi',
-          snippet: 'The Next, Next Generation tablet.'
-        }, {
-          name: 'MOTOROLA XOOM™',
-          snippet: 'The Next, Next Generation tablet.'
-        }
-      ];
-    }
+    templateUrl: 'phone-list/phone-list.template.html',
+    controller: ['$http',
+      function PhoneListController($http) {
+        var self = this;
+        self.orderProp = 'age';
+
+        $http.get('phones/phones.json').then(function(response) {
+          self.phones = response.data;
+        });
+      }
+    ]
   });
